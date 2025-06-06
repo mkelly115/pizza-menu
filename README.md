@@ -1,2 +1,3 @@
 # Basic Pizza Menu Website
-- Early Version
+- CSS added
+- Updating cards seperatley for final grid
