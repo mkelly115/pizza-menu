@@ -70,20 +70,21 @@ function Header() {
 }
 
 function Menu() {
+  const pizzas = pizzaData;
+  const numPizzas = pizzas.length
+
   return (
     <li className="menu">
       <h2>Our Menu</h2>
 
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => {
-          return (
-            <Pizza
-            pizzaObj={pizza}
-            key={pizza.name}
-            />
-          );
-        })}
-      </ul>
+      {numPizzas > 0 && (
+        <ul className="pizzas">
+          {pizzas.map((pizza) => {
+            return <Pizza pizzaObj={pizza} key={pizza.name} />;
+          })}
+        </ul>
+      )}
+
       {/* <Pizza
         name="Pizza Spinnaci"
         ingredients="Tomato, mozarella, spinach, and ricotta cheese"
@@ -112,7 +113,12 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()}. We're currently open!
+      {isOpen && (
+        <div className="order">
+          <p>We're Open until {closeHour}:00. Come visit us or order online</p>
+          <button className="btn">order</button>
+        </div>
+      )}
     </footer>
   );
 }
