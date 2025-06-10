@@ -78,26 +78,22 @@ function Menu() {
       <h2>Our Menu</h2>
 
       {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => {
-            return <Pizza pizzaObj={pizza} key={pizza.name} />;
-          })}
-        </ul>
-      ) : null}
+        <React.Fragment>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicous.
+          </p>
 
-      {/* <Pizza
-        name="Pizza Spinnaci"
-        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
-        photoName="pizzas/spinaci.jpg"
-        price={22}
-      />
+          <ul className="pizzas">
+            {pizzas.map((pizza) => {
+              return <Pizza pizzaObj={pizza} key={pizza.name} />;
+            })}
+          </ul>
+        </React.Fragment>
+      ) : (
+        <p>We're still working on our menu. Please come back later :)</p>
+      )}
 
-      <Pizza
-        name="Pizza Funghi"
-        ingredients="Tomato, mushrooms"
-        price={18}
-        photoName="pizzas/funghi.jpg"
-      /> */}
     </li>
   );
 }
@@ -111,10 +107,12 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen ? (
-        <Order closeHour={closeHour} openHour={openHour}/>
+        <Order closeHour={closeHour} openHour={openHour} />
       ) : (
         <div>
-          <p>We are happy to welcome you between {openHour}:00 and {closeHour}:00</p>
+          <p>
+            We are happy to welcome you between {openHour}:00 and {closeHour}:00
+          </p>
         </div>
       )}
     </footer>
@@ -122,8 +120,7 @@ function Footer() {
 }
 
 function Pizza({ pizzaObj }) {
-
-  if (pizzaObj.soldOut) return null
+  if (pizzaObj.soldOut) return null;
 
   return (
     <div className="pizza">
@@ -138,13 +135,15 @@ function Pizza({ pizzaObj }) {
 }
 
 function Order({ closeHour, openHour }) {
-
-  return(
+  return (
     <div className="order">
-          <p>We're Open from {openHour}:00 until {closeHour}:00. Come visit us or order online</p>
-          <button className="btn">order</button>
-        </div>
-  )
+      <p>
+        We're Open from {openHour}:00 until {closeHour}:00. Come visit us or
+        order online
+      </p>
+      <button className="btn">order</button>
+    </div>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
