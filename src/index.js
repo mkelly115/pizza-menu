@@ -71,19 +71,19 @@ function Header() {
 
 function Menu() {
   const pizzas = pizzaData;
-  const numPizzas = pizzas.length
+  const numPizzas = pizzas.length;
 
   return (
     <li className="menu">
       <h2>Our Menu</h2>
 
-      {numPizzas > 0 && (
+      {numPizzas > 0 ? (
         <ul className="pizzas">
           {pizzas.map((pizza) => {
             return <Pizza pizzaObj={pizza} key={pizza.name} />;
           })}
         </ul>
-      )}
+      ) : null}
 
       {/* <Pizza
         name="Pizza Spinnaci"
@@ -113,10 +113,14 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>We're Open until {closeHour}:00. Come visit us or order online</p>
           <button className="btn">order</button>
+        </div>
+      ) : (
+        <div>
+          <p>We are happy to welcome you between {openHour}:00 and {closeHour}:00</p>
         </div>
       )}
     </footer>
